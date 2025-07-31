@@ -12,7 +12,7 @@ variable "aws_secret_key" {
 
 variable "public_key" {
   description = "SSH Public Key"
-  default     = file("C:/Users/sreemanthena/.ssh/aws-ec2-key.pub")
+  type = string
 }
 
 
