@@ -5,6 +5,15 @@ provider "aws" {
     secret_key = var.aws_secret_key
 }
 
+##Statefile Block##
+terraform {
+  backend "s3" {
+    bucket = "sree-terraform"
+    key = "dev"
+    region = "us-east-1"
+    }
+}
+
 ##Resource Block##
 resource "aws_key_pair" "sree-ec2-key" {
   key_name   = var.key_name
@@ -18,7 +27,7 @@ resource "aws_instance" "demo-vm" {
   key_name      = aws_key_pair.sree-ec2-key.key_name
 
   tags = {
-    Name = "DevOps-GitHub-Actions"
+    Name = "EC2-Using-GHA"
   }
 
   vpc_security_group_ids = [aws_security_group.sg.id]
