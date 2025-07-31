@@ -1,7 +1,7 @@
 - name: Destroy AWS Instance with terraform
 
 on:
-    workflow_dispatch:
+  workflow_dispatch:
 
 jobs:
   destroy:
@@ -14,13 +14,16 @@ jobs:
     - name: Setup Terraform
       uses: hashicorp/setup-terraform@v3
 
-    - name: Init & Destroy Terraform
-      working-directory: terraform
+    - name: Terraform Init
+      run: terraform init
+      working -directory: ./terraform
+
+    - name: Terraform Destroy
+      run: terraform destroy -auto-approve
+      working-directory: ./terraform
       env:
         AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
         AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         TF_VAR_aws_access_key: ${{ secrets.AWS_ACCESS_KEY_ID }}
-      run: |
-        terraform init
-        terraform destroy -auto-approve
+
     

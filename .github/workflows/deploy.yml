@@ -1,8 +1,7 @@
 name: Provision AWS EC2 with Terraform
 
 on:
-  push:
-    branches: [ feature/sree-devops-007 ]
+  workflow_dispatch:
 
 jobs:
   deploy:
