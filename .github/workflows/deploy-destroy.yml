@@ -1,4 +1,4 @@
-- name: Destroy AWS Instance with terraform
+name: Destroy AWS Instance with terraform
 
 on:
   workflow_dispatch:
